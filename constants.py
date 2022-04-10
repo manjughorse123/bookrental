@@ -1,0 +1,3 @@
+SMS_AUTH_KEY = "63wKJEz5fdMobraxlDjiNyVnWPLgOZq2IBsUcHeuG9pF1R04CSPKyZWxMQuSYAoJi83OaIfDFLpNGC0H"
+SENDERID = "FSTSMS"
+SMS_URL = "https://www.fast2sms.com/dev/bulk"

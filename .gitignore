@@ -1,0 +1,19 @@
+# Add any directories, files, or patterns you don't want to be tracked by version control
+*.pyc
+*.log
+*.sqlite
+*/migrations/*
+*.py~
+*.*~
+*.csv
+*.csv~
+.project
+*.sqlite3
+db.sqlite3
+*.sqlite
+*migrations*
+.pydevproject
+# */settings.py
+mysite.log
+.idea
+__/*

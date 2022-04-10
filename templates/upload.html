@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div align="left">
+<h2>upload</h2>
+
+<form method="post" enctype="mulitpart/form-data">
+	{% csrf_token %}
+	<input type="file" name="document"></br>
+	<button type="submit">upload file</button>
+</form>
+
+</div>
+{% endblock %}

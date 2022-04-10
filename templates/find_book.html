@@ -1,0 +1,387 @@
+{% include "header_index.html" %}
+{% block content %}
+{% load static %}
+{% block javascript %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SignUp V1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->  
+    <link rel="icon" type="image/png" href="/static/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/vendor/animate/animate.css">
+<!--===============================================================================================-->  
+    <link rel="stylesheet" type="text/css" href="/static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+    
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+
+<style type="text/css">
+    .card {
+
+        padding-top: 50px;
+        padding-left: 30px;
+        margin-top: 50px;
+
+    }
+    #main {
+    float:left;
+    width: 112%;
+    margin-right:-220px; 
+    overflow:hidden;
+}
+
+
+</style>
+    <section>
+        <div class="container">
+                        <h2>Rent or buy a book, easy and </br> affordable</h2></br>
+                        <form class="form-inline mr-auto" method="POST" action="/users/find_books/">
+                            {% csrf_token %}
+                            <input class="form-control" type="text" id="searchText"  name="srch" class="form-control" aria-label="Search" placeholder="Search for title, author, ISBN or Topic...">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </form>
+                        
+
+        </div>
+    </section>
+
+                <div class="container">
+
+                    <div id="main" class="card white lighten-3 text-black">
+                        <div>
+                            {% if messages %}
+                            <ul class="messages">
+                                {% for k in messages %}
+                                <li style="color: red">{{ k }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    <!-- Card image -->
+                        {% if match %}
+                            <div style="display: inline-flex;margin-left: 20px">
+                                {% for book in match %}
+                                <div>
+                                    <div>
+                                        <a href="{{ book.get_absolute_url }}">
+                                            <img src="{{ book.image }}"></a>
+                                            </br>
+
+                                       {{ book.book_name }}</br>
+                                        {{book.author_id.name}}
+                                        <p class="price">Rs {{ book.mrp }}</p>
+                                    </div>
+
+                                    <div>
+
+                                        <div class="star_rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                            
+                                            <div class="thumbs">
+                                                <img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt="">
+
+                                            </div>
+                                    </div>
+                                    </br>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+
+                        {% endif %}
+                    <!-- Card content -->
+
+
+                    </div>
+                </div>      
+                
+            </div>
+        </div>
+    </div>
+    
+        <!--Home Page Banner End--> 
+    
+    <!--Home Section 2 start-->
+    <section class="section2 grey lighten-3 pt-4"> 
+        <div class="container"> 
+            <div class="row"> 
+                <div class="col-4 col-md-4">
+                    <div class="card text-center mb-4">
+                        <!-- Card image -->
+                        <img class="card-img-top" src="/static/img/rent_buy.png" alt="" />
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h4 class="card-title"><a href="#">Rent-Buy Sell Books</a></h4>
+                            <!-- Text -->
+                            <p class="card-text">Choose plan best<br /> for you</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-4"> 
+                    <div class="card text-center mb-4">
+                        <!-- Card image -->
+                        <img class="card-img-top" src="/static/img/cod.png" alt="" />
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h4 class="card-title"><a href="#">Cash on Delivery</a></h4>
+                            <!-- Text -->
+                            <p class="card-text">Get doorstep delivery to your place</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-4">
+                    <div class="card text-center mb-4">
+                        <!-- Card image -->
+                        <img class="card-img-top" src="/static/img/save_money.png" alt="" />
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h4 class="card-title"><a href="#">Save Money</a></h4>
+                            <!-- Text -->
+                            <p class="card-text">Save upto 70% of book costs</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>   
+    </section>
+    
+    <!--Home Section 2 End-->
+
+    <!--Home Section 3 start-->
+    <section class="section3">
+        <div class="container">
+            <div class="row">
+                <div class="col-8 col-md-6 col-sm-6"> 
+                    <h2 class="main_heading">Recommended For You</h2> 
+                </div>
+                <div class="col-4 col-md-6 col-sm-6 text-right">
+                    <a href="#" class="view_all">View All <i class="fas fa-angle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">  
+            <div class="col-12"> 
+            <div class="carousal"> 
+                
+                <!-- Card 1 --> 
+                <div class="card orange darken-1 text-white">
+
+                    <!-- Card image -->
+                    <div class="view overlay float-left"> 
+                        <img class="card-img-left" src="/static/img/book_image1.png" alt="">
+                        <a href="#!">
+                          <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+
+                    <!-- Card content -->
+                    <div class="card-body">
+
+                        <!-- Title -->
+                        <h4 class="card-title">Adventures of Huckleberry Finn</h4>
+                        <!-- Text -->
+                        <p class="card-text text-white">By Mark Twain</p>
+
+                        <div class="star_rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        
+                        <div class="thumbs">
+                            <img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt="">
+                            <img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt="">
+                            <a href="#" class="bg-white circle rounded-circle img-circle text-dark p-2 d-inline-block">+30</a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Card -->
+                
+                <!-- Card 2 -->
+                <div class="card deep-purple lighten-3 text-white">
+
+                    <!-- Card image -->
+                    <div class="view overlay float-left"> 
+                        <img class="card-img-left" src="/static/img/book_image2.png" alt="">
+                        <a href="#!">
+                          <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+
+                    <!-- Card content -->
+                    <div class="card-body">
+
+                        <!-- Title -->
+                        <h4 class="card-title">Adventures of Huckleberry Finn</h4>
+                        <!-- Text -->
+                        <p class="card-text text-white">By Mark Twain</p>
+
+                        <div class="star_rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        
+                        <div class="thumbs">
+                            <img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt="">
+                            <img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt="">
+                            <a href="#" class="bg-white circle rounded-circle img-circle text-dark p-2 d-inline-block">+30</a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Card -->
+                
+                <!-- Card 3 -->
+                <div class="card  pink lighten-4 text-white">
+
+                    <!-- Card image -->
+                    <div class="view overlay float-left"> 
+                        <img class="card-img-left" src="/static/img/book_image3.png" alt="">
+                        <a href="#!">
+                          <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+
+                    <!-- Card content -->
+                    <div class="card-body">
+
+                        <!-- Title -->
+                        <h4 class="card-title">Adventures of Huckleberry Finn</h4>
+                        <!-- Text -->
+                        <p class="card-text text-white">By Mark Twain</p>
+
+                        <div class="star_rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        
+                        <div class="thumbs">
+                            <img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt="">
+                            <img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt="">
+                            <a href="#" class="bg-white circle rounded-circle img-circle text-dark p-2 d-inline-block">+30</a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Card -->
+                
+                <!-- Card -->
+                <div class="card cyan darken-2 text-white">
+
+                    <!-- Card image -->
+                    <div class="view overlay float-left"> 
+                        <img class="card-img-left" src="/static/img/book_image4.png" alt="">
+                        <a href="#!">
+                          <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+
+                    <!-- Card content -->
+                    <div class="card-body">
+
+                        <!-- Title -->
+                        <h4 class="card-title">Adventures of Huckleberry Finn</h4>
+                        <!-- Text -->
+                        <p class="card-text text-white">By Mark Twain</p>
+
+                        <div class="star_rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        
+                        <div class="thumbs">
+                            <img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt="">
+                            <img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt="">
+                            <a href="#" class="bg-white circle rounded-circle img-circle text-dark p-2 d-inline-block">+30</a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Card -->
+                    
+            </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    
+
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+
+  $("#searchText").on('keyup', function(){
+
+     var ddd = [];
+     if(($("#searchText").val()).length>1){
+         $.ajax({
+               type: "get",
+               datatype : "json",
+               data: {'search':$("#searchText").val()} ,
+               url: '/book/auto/',
+               success: function (data) {
+                   ddd = data.data;
+                   $( "#searchText" ).autocomplete ({
+                       'source': ddd,
+                   });
+                },
+
+            });
+        }
+    });
+</script>
+{% endblock %}
+{% endblock %}
+{% block footer %}
+{% include "footer_index.html" %}
+{% endblock %}

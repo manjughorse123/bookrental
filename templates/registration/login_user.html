@@ -1,0 +1,275 @@
+{% include "header_index.html" %}
+{% block content %}
+{% load static %}
+{% block javascript %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V1</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="/static/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="/static/images/book.jpg" alt="IMG">
+				</div>
+
+				<form class="login100-form validate-form" method="POST">
+					<span class="login100-form-title">
+						Book Renter Login
+					</span>
+						{% csrf_token %}
+					<!-- <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email" placeholder="Email" >
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div> -->
+
+					<div id = "id_phone_numbe">
+					 	<div class="wrap-input100 validate-input" data-validate = "Valid code is required">
+							<select class="input100" name="countries" id="countries" >
+								<option value='+91' data-image="images/msdropdown/icons/blank.gif" data-imagecss="flag in" data-title="India" selected="selected">India (+91)</option>	
+							</select>	
+							<span class="focus-input100"></span>
+							<span class="symbol-input100">
+								<i class="fa fa-globe" aria-hidden="true"></i>
+							</span>
+						</div>
+
+						<div class="wrap-input100 validate-input" data-validate	= "Valid phonenumber is required">
+							<input class="input100" type="text" 
+							name="phone_number" id='id_phone_number_1' placeholder="phonenumber" pattern='^\+?\d{0,13}'>
+							<span class="focus-input100"></span>
+							<span class="symbol-input100">
+								<i class="fa fa-phone" aria-hidden="true"></i>
+							</span>
+						</div>
+						<div class="isa_error">{{ form.errors.phone_number }}</div>
+					 	
+
+
+
+					 		<div id="show" style="display: none">
+					 			<div class="wrap-input100 validate-input" data-validate	= "Valid mobile is required">
+                    				<input class="input100" type="text" id= "otp"  placeholder="OTP">
+                    				
+                    				<span class="focus-input100"></span>
+									<span class="symbol-input100">
+									<i  aria-hidden="true"></i>
+									</span>
+								</div>
+								<div class="wrap-input100 validate-input" data-validate	= "Valid mobile is required">
+									<button class="login100-form-btn" type="button" id="verify"> Log In</button>
+									<span class="focus-input100"></span>
+									<span class="symbol-input100">
+									<i  aria-hidden="true"></i>
+									</span>
+								</div>	
+                    	</div> 
+
+             			<div id= "for_password">
+							<div class="wrap-input100 validate-input" data-validate = "Password is required">
+									<input class="input100" type="password" name="password" placeholder="Password" >
+								<span class="focus-input100"></span>
+								<span class="symbol-input100">
+								<i class="fa fa-lock" aria-hidden="true"></i>
+								</span>
+							</div>
+						 
+							<div id="checked_password">
+                    			<input type="checkbox" name="otp" value="login_with_password"> Login With Password<br>
+                			</div>
+                		</div>
+                		<div id="for_otp">
+                 			<div id="checked_otp">
+                    			<input id="login_with_otp" type="checkbox" name="otp" value="login_with_otp"> Login With Otp<br>
+                			</div> 
+
+                		 <!-- <div class="isa_error">{{ form.errors}}</div>        -->
+					
+							<div class="container-login100-form-btn">
+								<button id='send_otp' class="login100-form-btn">
+									Login
+								</button>
+							</div>
+						</div>
+						<div id="for_login" style="display:none">
+							<div class="container-login100-form-btn">
+								<button id='login_btn' class="login100-form-btn">
+									Loginn
+								</button>
+							</div>
+						</div>	
+						<div class="text-center p-t-12">
+							<span class="txt1">
+								Forgot
+							</span>
+							<a class="txt2" href="/auth/password_reset/">
+								Username / Password?
+							</a>
+						</div>
+
+
+
+
+					<div class="text-center p-t-70">
+						<a class="txt2" href="/users/register">
+							Create your Account
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+
+	
+<!--===============================================================================================-->	
+	<script src="/static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/vendor/bootstrap/js/popper.js"></script>
+	<script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+<!--===============================================================================================-->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+       $(document).ready(function(){
+        $("#send_otp").click(function () {
+            var code =  $("#countries").val();
+            var phone_number =  $("#id_phone_number_1").val();
+            $.ajax({
+                type: "POST",
+                datatype : "application/json",
+                data: {'phone_number':code+phone_number} ,
+                url :'/api/v1.0/users/GetOtp/',
+                success: function (result) {
+                    alert("otp send");
+                    	$("#show").show();
+                		$("#for_password").hide();
+                		$("#for_otp").hide();
+                },
+                error: function () {
+                    // alert("false");
+                }
+            });
+    
+
+        });
+
+    });
+        $(document).ready(function(){
+        $("#verify").click(function(){
+            var code =  $("#countries").val();
+            var phone_number =  $("#id_phone_number_1").val();
+            $.ajax({
+                type: "POST",
+                datatype : "application/json",
+                data: {'otp':$("#otp").val(), 'phone_number':code+phone_number, "from_ajxa":1} ,
+                url :'/api/v1.0/users/verifyotp/',
+                success: function (result){
+                   
+                   if(result.status){
+                    alert("otp verified");
+                    $("#show_data").show();
+                    $("#show").hide();
+                    
+                   } 
+                   else{
+                    alert("otp  not verified");
+                   }
+
+                },
+            });
+
+        });
+    });
+    $(document).ready(function(){
+        
+           $('#checked_password').on('click', function(){
+            // $('#id_password').disabled=true;
+            $("#for_otp").hide();
+             $('#for_login').show();
+
+
+        });
+    });
+     $(document).ready(function(){
+        
+           $('#checked_otp').on('click', function(){
+            // $('#id_password').disabled=true;
+            $("#for_password").hide();
+             // $('#for_login').show();
+
+
+        });
+    });
+     $("#login_btn").click(function(){
+            var code =  $("#countries").val();
+            var phone_number =  $("#id_phone_number_1").val();
+            var password =  $("#id_pasword").val();
+            // alert('hello')
+
+            $.ajax({
+                type: "POST",
+                datatype : "application/json",
+                data: {'phone_number':code+phone_number , 'password':password } ,
+                url :'/users/login/',
+                success: function (result){
+                   
+                    alert("user registered");
+                     window.location='/';
+
+                },
+            });
+
+        });
+
+
+
+
+</script>
+</body>
+</html>
+</html>
+{% endblock %}
+{% endblock %}
+{% block footer %}
+{% include "footer_index.html" %}
+{% endblock %}

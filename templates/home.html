@@ -1,0 +1,77 @@
+{% include "header_index.html" %}
+{% block content %}
+{% load static %}
+{% block javascript %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SignUp V1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->  
+    <link rel="icon" type="image/png" href="/static/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/vendor/animate/animate.css">
+<!--===============================================================================================-->  
+    <link rel="stylesheet" type="text/css" href="/static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+    
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100   " >
+
+
+<style type="text/css">
+    .card {
+        padding-top: 120px;
+        padding-left: 50px;
+        margin-top: 50px;
+    }
+</style>
+<div class="container">
+
+<div class="card white lighten-3 text-black">
+    <div class="product-detail">       
+       <img src="{{ books.image.url }}">
+
+        <h3> {{ books.book_name }}</h3>
+             {{books.author_id.name}}
+
+        <form action="{% url "cart:cart_add" books.isbn_code %}", method="post">
+            {{ cart_books_form }}
+            {% csrf_token %}
+            <input type="submit" value="Add to cart">
+            <img src="/static/img/add-to-cart.png" alt="">
+        </form>
+    </div>
+</div>
+</div>      
+<!--Home Page Banner End--> 
+    
+    <!--Home Section 2 start-->
+
+    
+    
+
+    
+
+
+</body>
+</html>
+{% endblock %}
+{% endblock %}
+{% block footer %}
+{% include "footer_index.html" %}
+{% endblock %}

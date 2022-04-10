@@ -1,0 +1,338 @@
+
+{% load static %}
+
+<html>
+  <head>
+   
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Poppins:700" rel="stylesheet" />
+    <link href="/static/css/main1.css" rel="stylesheet" />
+    <!-- -------------------------------------- -->
+      <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"rel = "stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- ------------------------------------------------------------------------ -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<!-- <script type="text/javascript">
+        $(document).ready(function(){
+        
+           $('#click').click('change', function(){
+            // $('#id_password').disabled=true;
+            $('#show').show();
+
+
+        });
+    });
+</script> -->
+
+
+ <style type="text/css">
+   #sidebar {
+    width:220px;
+    padding:30px 20px 0 0;
+    float:left;
+}
+
+#sidebar ul{
+    margin:0;
+    padding:0;
+}
+
+#sidebar ul li {
+    margin:0;
+    list-style:none;
+    padding:10px 14px;
+}
+
+#sidebar ul li a {
+    display:block;
+}
+
+#sidebar ul li.selected {
+    background:#5993bb;
+    border-radius:4px;
+}
+
+#sidebar ul li.selected a {
+    color:#fff;
+}
+
+#main {
+    float:left;
+    width: 96%;
+    margin-right:-220px; 
+    overflow:hidden;
+}
+#main1 {
+    float:left;
+    width: 96%;
+    margin-right:-220px; 
+    overflow:hidden;
+}
+
+
+.product-list .item {
+    width:17.5%;
+    padding:10px 20px 10px 0;
+    float:left;
+    text-align:center;
+    line-height:1.2;
+}
+
+.product-list .item img {
+    width:100%;
+    margin-bottom:8px;
+}
+.h11{
+
+    background: gray;
+    width:1000px;
+    height: 1000px;
+}
+
+ </style>
+
+  </head>
+  <body>
+    <div class="s011">
+      <form method="post" action=".">
+        {% csrf_token %}
+        <fieldset>
+          <legend>Search BOOKs</legend>
+        </fieldset>
+        <div class="inner-form">
+         
+          <div class="main-form" id="main-form">
+            <div class="row">
+              <div class="input-wrap">
+                <div class="icon-wrap">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
+                  </svg>
+           
+                </div>
+                <div class="input-field">
+                  <label>Search books</label>
+                  
+                  <!-- <input type="text" placeholder="book name" /> -->
+                 <!-- <form class="form-inline mr-auto" method="POST" action="/users/find_book/" > -->
+
+                            <input class="form-control" type="text" id="searchText"  name="key"  placeholder="Search for title, author, ISBN or Topic...">
+
+
+                  
+                </div>
+              </div>
+            </div>
+            <div class="row second">
+              <div class="input-wrap">
+                <div class="icon-wrap">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
+                  </svg>
+                </div>
+                <div class="input-field">
+                  <label>Author</label>
+                            <input class="form-control" type="text" id="authorText"  name="srch"  placeholder="Search for author">
+                </div>
+              </div>
+              <div class="input-wrap">
+        
+                <div class="input-field">
+                  <label>books for study</label>
+                    <div class="input-select">
+                      <select data-trigger="" name="choices-single-defaul" id="select_book_cond">
+                        <option value="new"> New</option>
+                        <option value="second hand"> Second Hand </option>
+                     
+                      </select>
+                    </div>
+
+                </div>
+              </div>
+              <div class="input-wrap">
+                <!--  -->
+                <div class="input-field">
+                  <label>books</label>
+                  <div class="input-select">
+                    <select data-trigger="" name="choices-single-defaul" id="select_book_cat">
+
+                      <option value="rent">Rent</option>
+                      <option value="buy">Buy</option>
+                     
+
+                     
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+           
+            <div class="row last">
+             <!-- <button> <a href="/users/find_book/" id="btn-search" class="btn-search type="submit">Search</a></button> -->
+              <button id="btn_adv_search" class="btn-search">Search</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+</div>
+    <div id="sidebar">
+        <h3>All Categories</h3>
+        <ul>
+            <li {% if not category %}class="selected"{% endif %}>
+                <a href="{% url "users:new_search" %}">All Books</a>
+            </li>
+
+
+        {% for c in categories %}
+            <li {% if category.slug == c.slug %}{% endif %}>
+                <a href="{{ c.get_absolutes_url }}">{{ c.genre }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div id="main" class="product-list" >
+        <h1>{% if category %}{{ category.genre }}{% else %}All Books{% endif %}</h1>
+        <div class="container">
+          {% for book_lst in books %}
+          <div class="row">
+          {% for book in book_lst %}                  
+            <div class="item col-sm-3" style="margin: 1%">
+                <a href="{{ book.get_absolute_url }}">
+                    <img src='{% if book.image %}{{ book.image }}{% else %}{% static "img/no_image.jpg" %}{% endif %}'>
+                </a></br>
+                <a href="{{ book.get_absolute_url }}">{{ book.book_name }}</a>
+                 <br>
+                Rs {{ book.mrp }}
+            </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+      </div>
+    </div>
+
+
+
+
+
+    <div id="main1" class="product-list">
+      
+    </div>
+
+</div>
+    <script src="/static/js/extention/choices.js"></script>
+    <script>
+      const choices = new Choices('[data-trigger]',
+      {
+        searchEnabled: false,
+        itemSelectText: '',
+      });
+
+    </script>
+    <script src="/static/js/extention/flatpickr.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script>
+
+  $("#searchText").on('keyup', function(){
+
+     var ddd = [];
+     if(($("#searchText").val()).length>1){
+         $.ajax({
+               type: "get",
+               datatype : "json",
+               data: {'search':$("#searchText").val()} ,
+               url: '/book/auto/',
+               success: function (data) {
+                   ddd = data.data;
+                   $( "#searchText" ).autocomplete ({
+                       'source': ddd,
+                   });
+                },
+
+            });
+        }
+    });
+
+    $("#authorText").on('keyup', function(){
+      var data1 = [];
+      if(($("#authorText").val()).length>1){
+
+          $.ajax({
+               type: "get",
+               datatype : "json",
+               data: {'search':$("#authorText").val()} ,
+               url: '/book/author/',
+               success: function (data) {
+                   data1 = data.data;
+                   $( "#authorText" ).autocomplete ({
+                       'source': data1,
+                    
+                   });
+                },
+                   
+            });
+
+        }
+    });
+
+        
+           $('#btn_adv_search').on('click', function(){
+            
+            $.ajax({
+                type: "get",
+                datatype : "application/json",
+                data: {
+                  'search':$("#searchText").val(),
+                  'author':$("#authorText").val(),
+                  // 'book_cat':$("select_book_cat").val(),
+                  // 'book_cond':$("select_book_cond").val(),
+                },
+                url: '/book/search1/',
+                success: function (resp) {
+                   $("#main").hide();
+                    // alert(data);
+                    // console.log(resp);
+                    var htmlText = '';
+                    $('#main1').html(htmlText);
+                    console.log(resp.data)
+                    for (var i=0; i<= resp.data.length; i++) {
+                        
+                        try {
+
+                                htmlText += '<div class="item">';  
+                                htmlText += '<img src='+resp.data[i][1]+'>';
+                                htmlText += '<a href="{{ book.get_absolute_url }}"> Book Name:' + resp.data[i][0] +  '</a><br>';                              
+                                htmlText += '<h7> Author:' + resp.data[i][2] +  '</h7><br>';    
+                                htmlText += 'Rs' + resp.data[i][3];
+                             htmlText += '<br></div>';
+                             
+                              } 
+                             catch(err) {
+                                // $('#main1').append(err.message); 
+                                    }    
+                           } 
+                           $('#main1').append(htmlText); 
+                     
+                    },
+                error: function () {
+                    alert("error");
+                }
+            });
+            return false;
+            });
+
+       
+    </script>
+
+
+
+  </body>
+</html>
+
+

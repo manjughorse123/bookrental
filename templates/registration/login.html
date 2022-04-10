@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Login{% endblock %}
+{% csrf_token %}
+{% block javascript %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+
+        $(document).ready(function(){
+        
+           $('#checked_otp').on('change', function(){
+            // $('#id_password').disabled=true;
+            $('#checked_password').hide();
+            $('#password').hide();
+             var code =  $("#id_phone_number_0").val();
+            var phone_number =  $("#id_phone_number_1").val();
+            $.ajax({
+                type: "POST",
+                datatype : "application/json",
+                data: {'phone_number':code+phone_number} ,
+                url :'/api/v1.0/users/GetOtp/',
+                success: function (result) {
+                    alert("otp send");
+                    $("#show").show();
+                    $('#hide_some_data').hide();
+
+                },
+                error: function () {
+                    alert("please enter your phone_number");
+                }
+            });
+            return false;
+
+        });
+
+    $("#verify").click(function(){
+            
+            var code =  $("#id_phone_number_0").val();
+            var phone_number =  $("#id_phone_number_1").val();
+            $.ajax({
+                type: "POST",
+                datatype : "application/json",
+                data: {'otp':$("#otp").val(), 'phone_number':code+phone_number, "from_ajxa":1} ,
+                url :'/api/v1.0/users/verifyotp/',
+                success: function (result){
+                   
+                   if(result.status){
+                        alert("otp verified");
+                        window.location = '/';
+                    
+                   } 
+                   else{
+                    alert("otp  not verified");
+                   }
+
+                },
+            });
+
+        });
+
+    });
+
+        $(document).ready(function(){
+        
+           $('#checked_password').on('change', function(){
+            // $('#id_password').disabled=true;
+            $("#checked_otp").hide();
+            $('#password').show();
+
+
+        });
+    });
+
+
+
+    // $(document).ready(function(){
+    
+     
+
+   // $('#checked_password').on('change', function(){   
+   //     $('#checked_otp').hide();
+     $("#login_btn").click(function(){
+            var code =  $("#id_phone_number_0").val();
+            var phone_number =  $("#id_phone_number_1").val();
+            var password =  $("#id_pasword").val();
+            alert('hello')
+
+            $.ajax({
+                type: "POST",
+                datatype : "application/json",
+                data: {'phone_number':code+phone_number , 'password':password } ,
+                url :'/users/login/',
+                success: function (result){
+                   
+                    alert("user registered");
+                     window.location='/';
+
+                },
+            });
+
+        });
+
+// });
+        
+
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+ #content_data{
+    height: 200px;
+    width: 70%;
+  
+    padding: right
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-right: 110px;
+    margin-left: 250px;
+ }   
+
+
+</style>
+{% endblock %} 
+
+{% block content %}
+  <div id="login">
+ <div>
+        <h2><center>Login up</center></h2>
+    </div>
+    <div id="content_data">
+         <form method="post">
+        {% csrf_token %}
+
+        <p>{{error}}</p>   
+                <div>
+                    <label  for="phone_number">Phone Number: </label>
+                    {{form.phone_number}}
+                </div>
+
+                 <div id="show" hidden>
+                   
+                    <label for="otp">Otp: </label>
+                    <input type="text" id= "otp" >
+                    <button type="button" id="verify"> Verify Otp</button>
+                </div>
+        
+            <div id="hide_some_data">
+                <div id="password">
+                    <label  for="password">Password: </label>
+                    {{form.password}}
+                </div>
+            
+                <div id="checked_password">
+                    <input type="checkbox" name="otp" value="login_with_password"> Login With Password<br>
+                </div>
+                 <div id="checked_otp">
+                    <input  type="checkbox" name="otp" value="login_with_otp"> Login With Otp<br>
+                </div>          
+                    
+             </div>
+             <div id="login_btn">
+           <button type="submit">Send</button>
+              </div>
+        </form>
+    </div>    
+ </div> 
+
+{% endblock %}
+
+<!-- Checkbox: <input type="checkbox" id="myCheck"  onclick="myFunction()">
+
+<p id="text" style="display:none">Checkbox is CHECKED!</p>
+
+<script>
+function myFunction() {
+  var checkBox = document.getElementById("myCheck");
+  var text = document.getElementById("text");
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+     text.style.display = "none";
+  }
+}
+</script> -->

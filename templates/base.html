@@ -1,0 +1,196 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+  <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ 
+  <link href="{% static 'css/base.css' %}" rel="stylesheet">
+<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet">
+<!-- <script src="YourJquery source path"></script> -->
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+* {
+margin:0;
+padding:0;
+}
+header{
+  padding: 0;
+  margin: 0;
+  border: 0; 
+}
+
+footer {
+  font-size: 15px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+
+}
+
+
+header .row,
+footer .row {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  padding: 15.5px 10px;
+  background-size: contain;
+  overflow: hidden;
+  
+
+}
+header h2 {
+  font-weight: 700;
+  margin: 0;
+  color: white;
+}
+
+header nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+header a {
+  padding: 0 10px;
+  margin: 0;
+  color: white;
+}
+body {
+    min-width: 1260px;
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+label {
+  margin-left: 2%;
+  margin-top: 2%;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid green;
+  border-bottom: 16px solid green;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+</head>
+{% block javascript %}
+{% endblock %}
+
+{% block extra_head %}
+    {% endblock %}
+<body>
+<header>
+
+    <div class="row">
+        <h2 class="col-sm-4"><a href="/">Book Renter System</a></h2>
+        <nav class="col-sm-8 text-right">
+          <div class="container">
+
+
+</div>    {% if user.is_authenticated %}
+            <div id="logout"><a class="btn" href="/users/logout/">Logout</a></div>
+          {% else %} 
+            <div id="signup"><a class="btn" href="/users/signup/">Signup</a></div>
+            <div id="login"><a class="btn" href="/users/login/">Login</a></div>
+          {% endif %}
+            <div><b><font class="btn" id="user_name" color="white">{{ nameToShow }}</font></b></div>
+          
+        </nav>    
+  </div>
+    <div id="subheader">
+        <div class="cart">
+            {% with total_items=cart|length %}
+                {% if cart|length > 0 %}
+                    Your cart: 
+                    <a href="{% url "cart:cart_detail" %}">
+                       <b style="color:green;"> {{ total_items }} item{{ total_items|pluralize }}, ${{ cart.get_total_price }}</b>
+                    </a>
+                {% else %}
+                    Your cart is empty.
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</header>
+<script type='text/javascript'>
+
+  function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+            // Only send the token to relative URLs i.e. locally.
+            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+        }
+    }
+});
+  
+</script>
+{% block content %}
+  {% endblock %}
+
+
+
+    </body>
+</html>

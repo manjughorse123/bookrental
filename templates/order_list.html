@@ -1,0 +1,63 @@
+{% include "header_index.html" %}
+{% load static %}
+
+{% block title %}
+    Checkout
+{% endblock %}
+
+{% block content %}
+<!-- 
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script  src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready( function () {
+        $('#example').DataTable( {
+        // "bPaginate": false,
+        "bFilter": false,
+        "bInfo": false
+                 } );
+} )
+</script>   --> 
+
+</br></br></br></br></br>
+        <h2>Your order List</h2>
+
+{% if user.is_authenticated %}
+            <table id="example" class="table table-bordered" border="0px" width="300px">
+                    
+                    <thead>
+
+                    <tr>
+                        <td><b>Product Name </b></td>
+                        <td><b>Order No.</b></td>
+                        <td><b>Status</b></td>
+                        <td><b>Total_price</b></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+            {% for item in cart_dict %}
+                
+
+                    <tr>
+                        {% if item.total_count > 1 %}
+                            <td><a href="/myorders/{{ item.items.id }}/">
+                            <img src="{{ item.image }}" width="40px">{{ item.book_name}}</br><b style="color:green;"> + 1 More Items </b> </a></td>
+                        {% else %}
+                            <td><a href="/myorders/{{ item.items.id }}/">
+                            <img src="{{ item.image }}" width="40px">{{ item.book_name}}</a></td>
+                        {% endif %}
+                        <td><b style="color:blue;">{{ item.items.id }}</b></br>
+                            {{ item.items.created }}
+                        </td>
+                        <td>{{ item.items.status }}</td>  
+                        <td><b style="color:green;">
+                        total item {{item.total_count}}</br> Rs {{ item.mrp }} /-</b></td>
+                    </tr>
+            {% endfor %}
+                </tbody>
+            
+            </table>
+{% endif %}
+      
+{% endblock %}

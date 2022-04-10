@@ -1,0 +1,215 @@
+{% include "header_index.html" %}
+{% block content %}
+{% load static %}
+{% block javascript %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Supplier signup</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="/static/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+<!--===============================================================================================-->
+
+<style>
+.btn{
+	background-color: blue;
+
+}
+.btn1{
+	background-color: blue;
+	height:30px ;
+	width: 48px;
+	border-radius: 6px;
+	/*border: solid;*/
+	font-color:black !important;
+}
+#book_data{
+	height: auto !important;
+	width: 700px !important;
+
+}
+
+
+.add_book_form
+</style>
+</head>
+<body>
+	
+	<div class="limiter">
+
+		<div class="container-login100">
+					
+			<div class="wrap-login100">
+				<div class="wrap-login100">
+				<!-- <div class="login100-pic js-tilt" data-tilt>
+					<img src="/static/images/book.jpg" alt="IMG">
+				</div> -->
+					
+				
+				<div id="add_book">	
+					<form class="add_book_form" method="POST" action=".">
+						
+						{% csrf_token%}
+						<table>
+							<center>
+							<tr>
+								<td>user</td>
+								<td><select  name='supplier'>
+									<option value="{{key.supplier.id}}" >{{key.supplier}}</option>
+								
+								</select></td>
+							</tr>
+							
+							<tr>
+								<td>Book Name</td>
+								<td><input type="text" placeholder='book name' value='{{key.book_name}}' name="book_name"></td>
+							</tr>
+							<tr>
+								<td>Isbn_Code</td>
+								<td><input type="text" placeholder='isbn_code' value='{{key.isbn_code}}' name="isbn_code"></td>
+							</tr>
+							<tr>
+								<td>Mrp</td>
+								<td><input type="text" value='{{key.mrp}}' placeholder='Mrp' name="mrp"></td>
+							</tr>
+							<tr>
+								<td>Author</td>
+								<td><input type="text" placeholder='Author name' value='{{key.author}}' name="author"></td>
+							</tr>
+							<tr>
+								<td>Image</td>
+								<td><input type="text" placeholder='Author name' value='{{key.image}}' name="image"></td>
+								
+							</tr>
+							<tr>
+								<td>Language</td>
+								<td><input type="text" value='{{key.language}}' name="language"></td>
+							</tr>
+							<tr>
+								<td>Book Description</td>
+								<td><textarea
+								  name="book_description">{{key.book_description}}</textarea> </td>
+							</tr>
+							
+							<tr>
+
+								<td>Category</td>
+								<td><input type="text" value='{{key.category}}' name="category"></td>
+							</tr>
+							<tr>
+								<td>Binding Type </td>
+								<td><input type="text" value='{{key.binding_type}}' name="binding_type"></td>
+							</tr>
+							<tr>
+								<td>Buy Count</td>
+								<td><input type="text" value='{{key.buy_count}}' name="buy_count"></td>
+							</tr>
+							<tr>
+								<td>Rent Count</td>
+								<td><input type="text" value='{{key.rent_count}}' name="rent_count"></td>
+							</tr>
+							<tr>
+								<td>Book Condition </td>
+								<td><select id ="Book Condition" value='{{key.book_condition}}'name='book_condition'>
+									<option value="new" selected="selected">Buy</option>
+									<option value="rent">Rent</option>
+
+								</select></td>
+							</tr>
+							<tr>
+								<td>Publication Year</td>
+								<td><input type="text" value='{{key.publication_year}}' name="publication_year"></td>
+							</tr>
+							<tr>
+								
+								<td><button type="submit" id="add_book" class="btn">Add</button></td>
+							</tr>
+							</center>
+						</table>
+					</form>
+				</div>		
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+
+	
+<!--===============================================================================================-->	
+	<script src="/static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/vendor/bootstrap/js/popper.js"></script>
+	<script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+<!--===============================================================================================-->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+       
+     $(".btn").click(function(){
+        $('#add_book').show(); 
+         $('#book_data').hide(); 
+
+        });
+
+    $("#add").click(function(){
+            var code =  $("#countries").val();
+            var phone_number =  $("#id_phone_number_1").val();
+            var email =  $("#email").val();
+            var name =  $("#name").val();
+            var password =  $("#pasword").val();
+            var confirm_password =$("#confirm_password").val();
+
+            $.ajax({
+                type: "POST",
+                datatype : "application/json",
+                data: {'phone_number':code+phone_number , 'name':name  ,'email':email, 'password':password ,'confirm_password':confirm_password} ,
+                url :'/users/signup/',
+                success: function (result){
+                   
+                    alert("user registered");
+                   	window.location='/';
+
+                },
+            });
+
+        });  
+
+
+</script>
+</body>
+</html>
+</html>
+{% endblock %}
+{% endblock %}
+{% block footer %}
+{% include "footer_index.html" %}
+{% endblock %}

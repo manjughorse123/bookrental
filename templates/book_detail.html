@@ -1,0 +1,162 @@
+{% include "header_index.html" %}
+
+{% load static %}
+{% block title %}
+    {{ books.name }}
+{% endblock %}
+
+{% block content %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+  .modal-header, h4, .close {
+    background-color: #5cb85c;
+    color:white !important;
+    text-align: center;
+    font-size: 30px;
+  }
+  .modal-footer {
+    background-color: #f9f9f9;
+  }
+  </style>
+<style type="text/css">
+    .card {
+        padding-top: 120px;
+        padding-left: 50px;
+        margin-top: 50px;
+    }
+</style>
+<div class="container">
+
+    <div class="card white lighten-3 text-black">
+        <div class="product-detail">  
+
+
+       <img src="{{ books.image }}">
+
+        <h1> Name:- {{ books.book_name }}</h1>
+        <h3>Author :- {{books.author_id.name}}</h3>
+            <p class="price">Price:- {{books.mrp}}Rs </p></br>
+            
+    {% with book=books.buy_count %}
+        {% if book %}
+            <form action="{% url "cart:cart_add" books.isbn_code %}", method="post">
+                {{ cart_books_form }}
+                {% csrf_token %}
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <button type="button" class="btn btn-primary" id="myBtn"> Rent</button>
+                <input type="submit" value="Buy" class="btn btn-primary"></br>
+            </form>
+
+        {% else %}
+
+            <label class="btn btn-red">Out of Stock</label>
+
+        {% endif %}
+    {% endwith %}
+          </br>
+           <h3> Book_Description:- {{books.book_description}}</h3>
+
+        </div>
+    </div>
+</div>      
+
+{% endblock %}
+{% include "footer_index.html" %}
+
+
+
+<div class="container">
+  <!-- Trigger the modal with a button -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <h4> Rent Book</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form action="{% url "cart:rent_book" books.isbn_code %}", method="POST" id="form">
+            {% csrf_token %}
+            {{ cart_books_form }}</br>
+            <b><p class="price" id="main">Price:- {{books.mrp}} Rs</p></b>
+            <!-- <b><p class="price" id="main1" style="display: none;">Price:- {{books.mrp}} </p></b> -->
+            <input type="text" value="{{books.mrp}}" name="price" id="result" hidden>
+            <b><p class="price" id="main1"> </p></b>
+                <div class="input-field" id="select_book_cond">
+                    <input type="text" id="text_id" value="{{books.isbn_code}}" hidden>
+                      <select data-trigger="" id="list" name='select_data'>
+                        <option value="choose">Please Choose</option>
+                        <option value="Rent 1-4days + Security">Rent 1-4days + Security 1-4days</option>
+                        <option value="Rent 1week + Security 1week">Rent 1week + Security 1week</option>
+                        <option value="Rent 1month + Security">Rent 1month + Security 1month</option>
+                        <option value="Rent 3months + Security">Rent 3months + Security 3months</option>
+                        <option value="Rent 1semester + Security">Rent 1semester + Security 1semester</option>
+                        <option value="Buy New">Buy New</option>
+                        <option value="Buy Used">Buy Used </option>
+                      </select>
+                </div>
+            </br>
+              <button type="submit" class="btn btn-success" id="submit_btn"> submit</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+</div>
+ 
+<script>
+$(document).ready(function(){
+  $("#myBtn").click(function(){
+    $("#myModal").modal();
+  });
+});
+</script>
+
+<script>
+
+$(document).ready(function(){
+
+    $('#list').on('change',function(e){
+         e.preventDefault();
+        var value = $(this).val();        
+        console.log("Secilen: "+value); 
+        $.ajax({
+            url:'/book/book_path/',
+            type:'GET',
+            // dataType:"json",
+          // send selected data to the book_path method which is in views.py
+            data : {
+                        'value' : $(this).val(),
+                        'txt1': $("#text_id").val()
+
+                    }, // 'selec_data' will be used in request.GET.get('value') which is in views.py, $(this).val() is selected item, 
+            success:function(resp){
+                //console.log(resp.data);
+                console.log('price will be updated based on book selected');
+                $('#main').hide();
+                // $('#main1').show();
+                var htmlText = '';
+                $('#main1').html(htmlText);
+                htmlText += 'Price:- ' + resp.data[0]+ ' Rs';
+                $('#main1').append(htmlText);
+                $('#result').val(resp.data[0]);
+
+            },
+            error: function () {
+                alert("error");
+            }
+
+        });
+    });
+});
+
+</script>

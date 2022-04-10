@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Sign Up{% endblock %}
+
+{% csrf_token %}
+
+{% block content %}
+  
+<div id="signup">
+
+ 
+    <div>
+        <h2><center>Sign up</center></h2>
+    </div>
+   <div id="content_data">
+        <form  method="post">
+        {% csrf_token %}
+            <div id = "id_phone_numbe">
+                <div><label  id="label" for="phone_number">Phone Number: </label>
+                    {{form.phone_number}}
+                </div>
+                <div id="show" hidden>
+                   
+                    <label for="otp">Otp: </label>
+                    <input type="text" id= "otp" >
+                    <button type="button" id="verify"> Verify Otp</button>
+                </div>
+        
+            </div>
+            <div id="show_form_data" hidden>
+                
+                   <div>
+                        <label for="name">Email: </label>
+                        {{form.email}}
+                    </div>
+            
+                   <div >
+                        <label for="password1">Password: </label>
+                        {{form.password}}
+                    </div>
+                
+                
+                   <div >
+                        <label for="password2">Confirm Password: </label>
+                        {{form.confirm_password}}
+                    </div>
+            
+               
+            
+                <div id="signup_btn">
+                    <button type="submit">Sign up</button>
+                </div>
+            </div>
+        </form>
+    </div>    
+ </div> 
+
+{% endblock %}
+
+
+{% block javascript %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+        $(document).ready(function(){
+        $("#id_phone_number_1").blur(function () {
+            var code =  $("#id_phone_number_0").val();
+            var phone_number =  $("#id_phone_number_1").val();
+            $.ajax({
+                type: "POST",
+                datatype : "application/json",
+                data: {'phone_number':code+phone_number} ,
+                url :'/api/v1.0/users/GetOtp/',
+                success: function (result) {
+                    alert("otp send");
+                    $("#show").show();
+                },
+                error: function () {
+                    alert("false");
+                }
+            });
+    
+
+        });
+
+    });
+        $(document).ready(function(){
+        $("#verify").click(function(){
+            var code =  $("#id_phone_number_0").val();
+            var phone_number =  $("#id_phone_number_1").val();
+            $.ajax({
+                type: "POST",
+                datatype : "application/json",
+                data: {'otp':$("#otp").val(), 'phone_number':code+phone_number, "from_ajxa":1} ,
+                url :'/api/v1.0/users/verifyotp/',
+                success: function (result){
+                   
+                   if(result.status){
+                    alert("otp verified");
+                    $("#show_form_data").show();
+                    $("#show").hide();
+                    $("#id_phone_numbe").hide();
+                   } 
+                   else{
+                    alert("otp  not verified");
+                   }
+
+                },
+            });
+
+        });
+    });
+
+   
+      $("#signup_btn").click(function(){
+            var code =  $("#id_phone_number_0").val();
+            var phone_number =  $("#id_phone_number_1").val();
+            var email =  $("#id_email").val();
+            var password =  $("#id_pasword").val();
+            var confirm_password =$("#id_confirm_password").val();
+
+            $.ajax({
+                type: "POST",
+                datatype : "application/json",
+                data: {'phone_number':code+phone_number ,'email':email, 'password':password , 'confirm_password':confirm_password} ,
+                url :'/',
+                success: function (result){
+                   
+                    alert("user registered");
+                   
+
+                },
+            });
+
+        });
+
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+ #content_data{
+    height: 200px;
+    width: 70%;
+  
+    padding: right
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-right: 110px;
+    margin-left: 250px;
+ }   
+
+
+</style>
+
+{% endblock %} 
+
+
+

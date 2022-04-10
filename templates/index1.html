@@ -1,0 +1,549 @@
+
+{% extends "header_index.html" %}
+{% block content %}
+{% load static %}
+
+
+   
+ 
+    
+    <!--Home Page Banner Start--> 
+    
+    <section class="home_banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <h1>Rent or buy a book, easy and affordable</h1>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <div class="home_seach">
+                        <form class="form-inline mr-auto" method="POST" action="/users/find_books/">
+                            {% csrf_token %}
+                            <input class="form-control" type="text" id="searchText"  name="srch" class="form-control" aria-label="Search" placeholder="Search for title, author, ISBN or Topic...">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                            <a class="nav-link indigo-text" href="/users/new_search/">Advance search <span class="sr-only">(current)</span></a>
+                        </form>
+
+                    </div>
+                    <div class="download_app">
+                        <p>Download our app</p>
+                        <a class="app_btn" href="#"><img class="img-fluid" src="/static/img/google_app_icon.png" alt="" /></a>
+                        <a class="app_btn" href="#"><img class="img-fluid" src="/static/img/app_store_icon.png" alt="" /></a> 
+                  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!--Home Page Banner End--> 
+    
+    <!--Home Section 2 start-->
+    <section class="section2 grey lighten-3 pt-4"> 
+        <div class="container"> 
+            <div class="row"> 
+                <div class="col-4 col-md-4">
+                    <div class="card text-center mb-4">
+                        <!-- Card image -->
+                        <img class="card-img-top" src="/static/img/rent_buy.png" alt="" />
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h4 class="card-title"><a href="#">Rent-Buy Sell Books</a></h4>
+                            <!-- Text -->
+                            <p class="card-text">Choose plan best<br /> for you</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-4"> 
+                    <div class="card text-center mb-4">
+                        <!-- Card image -->
+                        <img class="card-img-top" src="/static/img/cod.png" alt="" />
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h4 class="card-title"><a href="#">Cash on Delivery</a></h4>
+                            <!-- Text -->
+                            <p class="card-text">Get doorstep delivery to your place</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-4">
+                    <div class="card text-center mb-4">
+                        <!-- Card image -->
+                        <img class="card-img-top" src="/static/img/save_money.png" alt="" />
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h4 class="card-title"><a href="#">Save Money</a></h4>
+                            <!-- Text -->
+                            <p class="card-text">Save upto 70% of book costs</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>   
+    </section> 
+    <!--Home Section 2 End-->
+
+    <!--Home Section 3 start-->
+    <section class="section3">
+        <div class="container">
+            <div class="row">
+                <div class="col-8 col-md-6 col-sm-6"> 
+                    <h2 class="main_heading">Recommended For You</h2> 
+                </div>
+                <div class="col-4 col-md-6 col-sm-6 text-right">
+                    <a href="#" class="view_all">View All <i class="fas fa-angle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">  
+            <div class="col-12"> 
+            <div class="carousal"> 
+                
+                <!-- Card 1 --> 
+                <div class="card orange darken-1 text-white">
+
+                    <!-- Card image -->
+                    <div class="view overlay float-left"> 
+                        <img class="card-img-left" src="/static/img/book_image1.png" alt="">
+                        <a href="#!">
+                          <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+
+                    <!-- Card content -->
+                    <div class="card-body">
+
+                        <!-- Title -->
+                        <h4 class="card-title">Adventures of Huckleberry Finn</h4>
+                        <!-- Text -->
+                        <p class="card-text text-white">By Mark Twain</p>
+
+                        <div class="star_rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        
+                        <div class="thumbs">
+                            <img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt="">
+                            <img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt="">
+                            <a href="#" class="bg-white circle rounded-circle img-circle text-dark p-2 d-inline-block">+30</a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Card -->
+                
+                <!-- Card 2 -->
+                <div class="card deep-purple lighten-3 text-white">
+
+                    <!-- Card image -->
+                    <div class="view overlay float-left"> 
+                        <img class="card-img-left" src="/static/img/book_image2.png" alt="">
+                        <a href="#!">
+                          <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+
+                    <!-- Card content -->
+                    <div class="card-body">
+
+                        <!-- Title -->
+                        <h4 class="card-title">Adventures of Huckleberry Finn</h4>
+                        <!-- Text -->
+                        <p class="card-text text-white">By Mark Twain</p>
+
+                        <div class="star_rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        
+                        <div class="thumbs">
+                            <img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt="">
+                            <img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt="">
+                            <a href="#" class="bg-white circle rounded-circle img-circle text-dark p-2 d-inline-block">+30</a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Card -->
+                
+                <!-- Card 3 -->
+                <div class="card  pink lighten-4 text-white">
+
+                    <!-- Card image -->
+                    <div class="view overlay float-left"> 
+                        <img class="card-img-left" src="/static/img/book_image3.png" alt="">
+                        <a href="#!">
+                          <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+
+                    <!-- Card content -->
+                    <div class="card-body">
+
+                        <!-- Title -->
+                        <h4 class="card-title">Adventures of Huckleberry Finn</h4>
+                        <!-- Text -->
+                        <p class="card-text text-white">By Mark Twain</p>
+
+                        <div class="star_rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        
+                        <div class="thumbs">
+                            <img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt="">
+                            <img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt="">
+                            <a href="#" class="bg-white circle rounded-circle img-circle text-dark p-2 d-inline-block">+30</a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Card -->
+                
+                <!-- Card -->
+                <div class="card cyan darken-2 text-white">
+
+                    <!-- Card image -->
+                    <div class="view overlay float-left"> 
+                        <img class="card-img-left" src="/static/img/book_image4.png" alt="">
+                        <a href="#!">
+                          <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+
+                    <!-- Card content -->
+                    <div class="card-body">
+
+                        <!-- Title -->
+                        <h4 class="card-title">Adventures of Huckleberry Finn</h4>
+                        <!-- Text -->
+                        <p class="card-text text-white">By Mark Twain</p>
+
+                        <div class="star_rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        
+                        <div class="thumbs">
+                            <img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt="">
+                            <img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt="">
+                            <a href="#" class="bg-white circle rounded-circle img-circle text-dark p-2 d-inline-block">+30</a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Card -->
+                    
+            </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    <!--Home Section 3 End-->
+    
+    
+    <!--Section 4-->
+    
+    <section class="section4">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-12 col-md-8">
+                    <h2 class="main_heading">Browse</h2> 
+                    <div class="form-row">
+                        <div class="col-12 col-md-4 col-sm-6">
+                            <div class="card">
+                                <img class="card-img-left" src="/static/img/book_image4.png" alt="">
+                            
+                                <!-- Title -->
+                                <h4 class="card-title">Adventures of Huckleberry Finn</h4>
+                                <!-- Text -->
+                                <p class="card-text">By Mark Twain</p>
+
+                                <div class="star_rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 col-sm-6">
+                            <div class="card">
+                                <img class="card-img-left" src="/static/img/book_image4.png" alt="">
+                            
+                                <!-- Title -->
+                                <h4 class="card-title">Adventures of Huckleberry Finn</h4>
+                                <!-- Text -->
+                                <p class="card-text">By Mark Twain</p>
+
+                                <div class="star_rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 col-sm-6">
+                            <div class="card">
+                                <img class="card-img-left" src="/static/img/book_image4.png" alt="">
+                            
+                                <!-- Title -->
+                                <h4 class="card-title">Adventures of Huckleberry Finn</h4>
+                                <!-- Text -->
+                                <p class="card-text">By Mark Twain</p>
+
+                                <div class="star_rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 col-sm-6">
+                            <div class="card">
+                                <img class="card-img-left" src="/static/img/book_image4.png" alt="">
+                            
+                                <!-- Title -->
+                                <h4 class="card-title">Adventures of Huckleberry Finn</h4>
+                                <!-- Text -->
+                                <p class="card-text">By Mark Twain</p>
+
+                                <div class="star_rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 col-sm-6">
+                            <div class="card">
+                                <img class="card-img-left" src="/static/img/book_image4.png" alt="">
+                            
+                                <!-- Title -->
+                                <h4 class="card-title">Adventures of Huckleberry Finn</h4>
+                                <!-- Text -->
+                                <p class="card-text">By Mark Twain</p>
+
+                                <div class="star_rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 col-sm-6">
+                            <div class="card">
+                                <img class="card-img-left" src="/static/img/book_image4.png" alt="">
+                            
+                                <!-- Title -->
+                                <h4 class="card-title">Adventures of Huckleberry Finn</h4>
+                                <!-- Text -->
+                                <p class="card-text">By Mark Twain</p>
+
+                                <div class="star_rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="view_all">View All <i class="fas fa-angle-right"></i></a>
+                
+                </div>
+                <div class="col-12 col-md-4 authorListing">
+                    <h2 class="main_heading">Author</h2> 
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-flush">
+                            <a href="#"><img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt=""> Jessica Rhodes</a>
+                        </li>
+                        <li class="list-group-item list-group-flush">
+                            <a href="#"><img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt=""> Jessica Rhodes</a>
+                        </li>
+                        <li class="list-group-item list-group-flush">
+                            <a href="#"><img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt=""> Jessica Rhodes</a>
+                        </li>
+                        <li class="list-group-item list-group-flush">
+                            <a href="#"><img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt=""> Jessica Rhodes</a>
+                        </li>
+                        <li class="list-group-item list-group-flush">
+                            <a href="#"><img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt=""> Jessica Rhodes</a>
+                        </li>
+                        <li class="list-group-item list-group-flush">
+                            <a href="#"><img class="img-thumbnail img-circle rounded-circle" src="/static/img/author_img1.png" alt=""> Jessica Rhodes</a>
+                        </li>
+                    </ul>
+                    <a href="#" class="view_all">View All <i class="fas fa-angle-right"></i></a>
+                
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!--Section 4 End-->
+    
+    <!-- Section: Testimonials v.2 -->
+    <section class="section5">
+
+        <div class="testimonaials_wr test_slider"> 
+            <div class="testimonial">
+                <!--Content-->
+                <p>
+                 <i class="fas fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos
+                 id officiis hic tenetur quae quaerat ad velit ab. Lorem ipsum dolor sit amet, consectetur
+                 adipisicing elit. Dolore cum accusamus eveniet molestias voluptatum inventore laboriosam labore
+                 sit, aspernatur praesentium iste impedit quidem dolor veniam.
+                </p>
+                <h4 class="font-weight-bold">Anna Deynah</h4>
+            </div>
+            <div class="testimonial">
+                <!--Content-->
+                <p>
+                 <i class="fas fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos
+                 id officiis hic tenetur quae quaerat ad velit ab. Lorem ipsum dolor sit amet, consectetur
+                 adipisicing elit. Dolore cum accusamus eveniet molestias voluptatum inventore laboriosam labore
+                 sit, aspernatur praesentium iste impedit quidem dolor veniam.
+                </p>
+                <h4 class="font-weight-bold">Anna Deynah</h4>
+            </div>
+            <div class="testimonial">
+                <!--Content-->
+                <p>
+                 <i class="fas fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos
+                 id officiis hic tenetur quae quaerat ad velit ab. Lorem ipsum dolor sit amet, consectetur
+                 adipisicing elit. Dolore cum accusamus eveniet molestias voluptatum inventore laboriosam labore
+                 sit, aspernatur praesentium iste impedit quidem dolor veniam.
+                </p>
+                <h4 class="font-weight-bold">Anna Deynah</h4>
+            </div>
+        </div>
+     
+    </section>
+    <!-- Section: Testimonials v.2 -->
+
+    
+<div class="subscription_section">
+  <div class="container">
+
+    <!-- Grid row-->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-6 m-auto text-center">
+        <h6 class="mb-0">Get our latest updates!</h6>
+        <p>Subscribers to our newsletter have been scientifically proven to be smarter, better looking and at least 50% more awesome than average.</p>
+        <form class="form-inline mr-auto">
+            <div class="input-group md-form form-sm form-1 pl-0">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" ><i class="fas fa-envelope mr-3"></i></span>
+                </div>
+                <input class="form-control" type="text" placeholder="Your email." aria-label="Search">
+            </div>
+            <button class="btn btn-white bg-white btn-rounded btn-md my-0 ml-sm-2 waves-effect waves-light" type="submit">Subscribe</button>
+        </form>
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row-->
+
+  </div>
+</div>
+    
+    <!-- Footer -->
+
+<script type="text/javascript">
+
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                // Only send the token to relative URLs i.e. locally.
+                xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+            }
+        }
+    });
+
+
+  $("#searchText").on('keyup', function(){
+
+     var ddd = [];
+     if(($("#searchText").val()).length>1){
+         $.ajax({
+               type: "get",
+               datatype : "json",
+               data: {'search':$("#searchText").val()} ,
+               url: '/book/auto/',
+               success: function (data) {
+                   ddd = data.data;
+                   $( "#searchText" ).autocomplete ({
+                       'source': ddd,
+                   });
+                },
+
+            });
+        }
+    });
+
+
+  
+</script>
+
+{% endblock %}
+    
+{% block footer %}
+    {% include "footer_index.html" %}
+{% endblock %}
+

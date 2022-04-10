@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Checkout
+{% endblock %}
+
+{% block content %}
+    <h1>Address Details</h1>
+    <div class="order-info">
+        <h3>Your order</h3>
+        
+            {% for item in cart %}
+                {{ item.quantity }}x {{ item.book.book_name }} = ${{ item.total_price }}
+            {% endfor %}
+        
+        <p>Total: ${{ cart.get_total_price }}</p>
+    </div>
+
+<div class="container">
+
+    <form action='.' method="post" class="order-form">
+        {{ form.as_p }}
+        <!-- <input type="text" name="total_pricee" value="${{ cart.get_total_price }}" > -->
+        <p><input type="submit" value="Place order"></p>
+
+        {% csrf_token %}
+
+    </form>
+</div>   
+<div align="right" class='pm-button'><a href='https://www.payumoney.com/sandbox/paybypayumoney/#/2F51037AC44651E1EB7CA126DF209E6F'><img src='https://www.payumoney.com/media/images/payby_payumoney/new_buttons/22.png' /></a></div> 
+
+
+{% endblock %}

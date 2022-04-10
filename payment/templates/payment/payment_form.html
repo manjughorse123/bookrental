@@ -1,0 +1,85 @@
+{% include "header_index.html" %}
+{% block content %}
+{% load static %}
+{% block javascript %}
+<html>
+  <head onload="submitPayuForm()">
+  <script type="text/javascript">
+    var hash = "{{ hashh }}";
+    function submitPayuForm() {
+      if(hash =='') {
+        return;
+      }
+      var payuForm = document.forms.payuForm;
+      payuForm.submit();
+    }
+  </script>
+
+  </head>
+  <body>
+    <br/><br/><br/><br/>
+    <h2>PayU Form</h2>
+    <br/>
+    {% if error %}
+  
+      <span style="color:red">Please fill all mandatory fields.</span>
+      <br/>
+      <br/>
+      {% endif %}
+     
+      <form action={{ posted.action }} method="post" name="payuForm">
+        <input type="hidden" name="key" value="{{posted.key}}" />
+        <input type="hidden" name="hash_string" value="{{ posted.hash_string }}" />
+        <input type="hidden" name="hash" value="{{ posted.hashh }}"/>
+        <input type="hidden" name="posted" value="{{ posted }}"/>
+        <input type="hidden" name="txnid" value="{{ posted.txnid }}" />
+        <input type="text" name="order_id" value="{{ posted.order_id }}" />
+      <table>
+        <tr>
+          <td><b>Mandatory Parameters</b></td>
+        </tr>
+        <tr>
+         <td>Amount: </td>
+          <td><input name="amount" value="{{ posted.amount|default:'' }}" /></td>
+          <td>First Name: </td>
+          <td><input name="firstname" id="firstname" value="{{ posted.firstname|default:'' }}" /></td>
+        </tr>
+        <tr>
+          <td>Email: </td>
+          <td><input name="email" id="email" value="{{ posted.email|default:'' }}" /></td>
+          <td>Phone: </td>
+          <td><input name="phone" value="{{ posted.phone|default:'' }}" /></td>
+        </tr>
+        <tr>
+          <td>Product Info: </td>
+          <td colspan="3"><textarea name="productinfo">{{ posted.productinfo|default:'' }}</textarea></td>
+        </tr>
+        <tr>
+          <td>Success URI: </td>
+          <td colspan="3"><input name="surl" value="{{ posted.surl }}" size="64" /></td>
+        </tr>
+        <tr>
+          <td>Failure URI: </td>
+          <td colspan="3"><input name="furl" value="{{ posted.furl }}" size="64" /></td>
+        </tr>
+
+        <tr>
+          <td colspan="3">
+                <input type="hidden" name="service_provider" value="{{posted.service_provider}}" size="64" />
+          </td>
+        </tr>
+             
+        
+        <td colspan="4"><input type="submit" value="Submit" /></td>
+      
+    
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
+{% endblock %}
+{% endblock %}
+{% block footer %}
+{% include "footer_index.html" %}
+{% endblock %}

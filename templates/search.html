@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script  src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    $(document).ready( function () {
+   $('#example').DataTable( {
+        // "bPaginate": false,
+        "bFilter": false,
+        "bInfo": false
+                 } );
+} );
+</script>
+
+</head>
+
+<body>
+<div class="container">
+<h1>Search Books Information</h1>
+
+    <div>
+        {% if messages %}
+        <ul class="messages">
+            {% for k in messages %}
+            <li style="color: red">{{ k }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <div style="color: black">
+        {% if key %}
+            <table id="example" class="table table-bordered" border="0px" width="300px">
+                    
+                    <thead>
+                    <tr>
+                        <td><b>Book_Name</td></b></td>
+                        <td><b>Auther </td></b></td>
+                        <td><b>Language</td></b></td>
+                        <td><b>Book_Description</td></b></td>
+                        <td><b>Binding_type</td></b></td>
+                        <td><b>Category</td></b></td>
+                        <td><b>Pub_Year</td></b></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in key %}
+                    <tr>
+                        <td><a href="{{ book.get_absolute_url }}"> {{ book.book_name }} </a></td>
+                        <td>{{ book.author_id }}</td>
+                        <td>{{ book.language }}</td>
+                        <td>{{ book.book_description }}</td>
+                        <td>{{ book.binding_type }}</td>
+                        <td>{{ book.category_id }}</td>
+                        <td>{{ book.publication_year }}</td>
+                    
+                    </tr>
+                        {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+</div>
+</body>
+{% endblock %}

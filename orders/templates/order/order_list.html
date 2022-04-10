@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Checkout
+{% endblock %}
+
+{% block content %}
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script  src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready( function () {
+        $('#example').DataTable( {
+        // "bPaginate": false,
+        "bFilter": false,
+        "bInfo": false
+                 } );
+} )
+</script>   
+
+        <h2>Your order List</h2>
+     
+{% if user.is_authenticated %}
+            <table id="example" class="table table-bordered" border="0px" width="300px" >
+                    
+                    <thead>
+
+                    <tr>
+                        <!-- <td><b>ID</td></b></td> -->
+                        <td><b>customer_id </td></b></td>
+                        <!-- <td><b>user</td></b></td> -->
+                        <td><b>order_date</td></b></td>
+                        <td><b>status</td></b></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+            {% for orders in order %}
+                    <tr>
+                        <!-- <td><a href="{{ medicine.get_absolute_url }}"> {{ orders.id }} </a></td> -->
+                        <td><a href="{{ book.get_absolute_url }}">{{ orders.id}}</a></td>
+                        <!-- <td>{{ orders.user }}</td> -->
+                        <td>{{ orders.order_date }}</td>
+                        <td>{{ orders.status }}</td>
+                    
+                    </tr>
+            {% endfor %}
+
+                </tbody>
+            </table>
+{% endif %}
+      
+{% endblock %}

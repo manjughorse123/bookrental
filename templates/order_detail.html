@@ -1,0 +1,111 @@
+{% include "header_index.html" %}
+{% load static %}
+
+{% block title %}
+    Checkout
+{% endblock %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+  <style>
+
+.dot {
+  height: 8px;
+  width: 8px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.rcorners1 {
+  border-radius: 15px;  
+}
+
+.rcorners2 {
+  border-radius:15px;
+  border: 1px solid #D5DBDB;
+  padding: 20px; 
+  width: 960px;
+  height: 150px;  
+}
+.first {
+float: left;
+position:relative;
+left: 30px;
+}
+
+</style>
+{% block content %}
+{% if user.is_authenticated %}
+
+</br></br></br></br></br>
+{% for order_detail in cart %}
+<div align="center">
+    <u><a href="/"> Home</a> </u>&nbsp;
+    <span class="dot"></span>&nbsp;&nbsp;
+    <u><a href="/myorders/">  Myorders</a></u>
+        <span class="dot"></span>&nbsp;&nbsp;
+    Order No.- {{id}}
+</div>
+
+
+<div class="container mt-3">
+    <div class="d-flex bd-highlight bg-white" style="border-radius: 5px;">
+        <div class="p-2 flex-grow-1 bd-highlight">
+        <b>Order No.- {{id}}</b></br>
+                    {{order.created}}</br>
+        </div>
+
+        <div class="p-2 bd-highlight">
+         <b>Order Total.-&#8377; {{order_detail.mrp}}/-</b></br>
+                    {{order.created}}</br>
+        </div>
+    </div>
+    <br>
+  <div class="rcorners1 bg-white" style="height:350px;width: 1110px">
+      </br>
+        <div style="float:left;position:relative;left: 10px"><img src="{{order_detail.image}}" width="80px" height="100px">
+        </div>&nbsp;
+        <div style="float:left;position:relative;left: 20px"><h3><b style="color:green;">{{order.status}} ,</b> {{order.created}}</h3>
+            <h5>{{order_detail.book_name}}</h5>
+            Sold By: - Courier Company Name</br>
+            Quantity:- 1</br>
+        </div>
+        <div style="float:right">
+          <h4><b>&#8377; {{order_detail.mrp}}/-</b></h4>
+        </div>
+
+        <br><br><br><br>        
+        <br><br>
+        <div class="rcorners2" style="float:left;position:relative;left: 100px">
+        <a href="{%url 'invoice:invoicelist' id%}"><p><img src="https://img.icons8.com/color/26/000000/download.png"> Download Invoice</p></a> 
+        <a href="#"><p><img src="https://img.icons8.com/office/26/000000/external.png">
+        View Return Policy</p></a>
+        <a href="#"><p><img src="https://img.icons8.com/color/26/000000/user-group-man-man.png">
+        Contact Us</p></a>
+        </div>
+        <br>
+
+  </div>
+  <br>
+  <div class="rcorners1 bg-white" style="height:250px;width: 1110px">
+  </br>
+      <div class="first">
+        <h4><b> Delivery Address</b></h4>
+      </br>
+        <h5><b>{{order.first_name}}</b></h5>
+        {{order.address}}</br></br>
+        Mobile:-
+        {{order.customer_id.phone_number}}
+      </div>
+  </div>
+
+</div>
+{% endfor %}     
+
+
+
+{% endif %}
+      
+{% endblock %}

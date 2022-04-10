@@ -1,0 +1,463 @@
+@media all and (max-width: 1366px) {
+   
+    header {
+        max-height: 65px;
+    }
+    
+    header img.logo_image {
+        margin: 6px 0;
+        width: 80px;
+    }
+    
+    header .btn.btn-indigo {
+        height: inherit;
+        line-height: 22px;
+    }
+    
+    section.home_banner {
+        padding-top: 65px;
+        padding-bottom: 5px;
+    }
+    
+    section.home_banner h1 {
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 36px;
+        margin-top: 84px;
+    }
+    
+    section.home_banner p {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 22px;
+    }
+    
+    section.home_banner form {
+        margin-bottom: 50px; 
+    }
+    
+    section.home_banner .download_app p {
+        margin-bottom: 8px;
+    }
+    
+    section.home_banner {
+        background-position: 85% center;
+        background-size: 571px;
+    }
+    
+    section.section2 {
+        padding-top: 24px !important;
+    }
+    
+    .section2 .card .card-body,
+    .section2 .card .card-title a {
+        font-size: 14px;
+        line-height: 16px;
+    }
+  
+    .section2 .card .card-body {
+        padding: 0 !important;
+    }
+     
+    .section2 .card img.card-img-top {
+        height: 32px;
+    }
+    
+    .section3 .card {
+        width: 384px;
+        padding-left: 150px;
+        min-height: 234px;
+        margin: 9px; 
+    }
+    
+    .section3 .card img {
+        max-width: 127px;
+    }
+    
+    .section3 .card .view {
+        left: 24px;
+        top: 24px;
+    }
+    
+    .section3 .card .card-body {
+        padding: 24px 20px 20px 20px;
+    }
+    
+    .section3 .card h4.card-title {
+        font-size: 18px;
+    }
+    
+    .section3 .thumbs img, .section3 .thumbs a {
+        width: 32px;
+        height: 32px;
+        margin-right: 2px;
+    }  
+    
+    .section3 .thumbs a { 
+        font-size: 12px;
+        width: 30px;
+        height: 30px; 
+        padding: 7px 4px !important;
+        line-height: 16px; 
+    }
+    
+    .section4 {
+        padding-bottom: 90px;
+    }
+    
+    .section4 .card {
+        min-height: 104px;
+        padding-left: 86px;
+        margin-bottom: 20px;
+    }
+
+    .section4 .card img {
+        max-width: 74px; 
+    }
+    
+    .section4 h4.card-title {
+        font-size: 14px;
+        line-height: 17px;
+    }
+    
+    .section4 p.card-text {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    
+    .section4 .star_rating {
+        color: #fec107;
+        font-size: 12px;
+    }
+    
+    .section4 ul li a {
+        font-size: 14px; 
+    }
+    
+    .section4 ul li img {
+        margin-right: 5px;
+        width: 37px;
+    }
+    
+    section.section5 {
+        font-size: 14px;
+        padding: 50px 0 60px 0;
+    }
+    
+    .section5 h4 {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    
+    .testimonaials_wr p {
+        margin-bottom: 28px;
+    }
+    
+    .section5 .fas {
+        font-size: 50px;
+        margin-bottom: 30px;
+    }
+    
+    .subscription_section {
+        font-size: 14px;
+        padding: 40px 0 58px 0;
+    }
+    
+    .subscription_section h6 {
+        font-size: 18px;
+        margin-bottom: 14px !important;
+    }
+    
+    .subscription_section form .input-group {
+        border: 2px solid #fff;
+        margin: 4px 0px 20px 0px;
+        width: 300px;
+    }
+    
+    .subscription_section form input.form-control {
+        font-size: 14px; 
+    }
+    
+    .subscription_section  .input-group-prepend {
+        width: 28px;
+    }
+    
+    .subscription_section form button {
+        font-size: 14px !important;
+        line-height: 10px;
+        margin-left: 13px !important;
+        width: 106px;
+        padding: 14px !important;
+        margin-top: -16px !important;
+    }
+
+    footer, 
+    footer.page-footer a, 
+    footer h6 {
+        font-size: 14px;
+    }
+    
+    footer.page-footer .container.mt-5 {
+        margin-top: 50px !important;
+    }
+    
+    footer.page-footer .footer-copyright, 
+    footer.page-footer .footer-copyright a {
+        font-size: 12px;
+    }
+    
+    .footer-copyright .row {
+        padding-top: 30px;
+        padding-bottom: 14px;
+    }
+
+} 
+
+
+@media all and (max-width: 1024px) {
+   
+    header .navbar .nav-item a.nav-link {
+        margin:0 10px;
+    }
+    
+    section.home_banner h1 {
+        margin-top: 60px;
+    }
+    
+    .subscription_section,
+    section.section4,
+    section.section5 {
+        padding: 50px 0; 
+    }
+    
+    section.section3 {
+        padding: 50px 15px; 
+    }
+    
+    section.section4 {
+        padding-top:0; 
+    }
+    
+    
+}
+
+
+ @media all and (max-width: 768px) {
+     
+    /*Mobile Menus*/ 
+    header .navbar {
+        background: #fff;
+        margin: 0 -15px;
+        padding: 0 15px !important;
+    }
+    
+    header .navbar a.nav-link {
+        margin: 0 !important;
+        border-bottom: 1px solid #efefef;
+        font-size: 14px !important;
+        padding: 7px 15px !important;
+    }
+    
+    header .navbar .btn.btn-indigo {
+        margin: 12px 0 20px 0;
+    }
+    
+    section.home_banner .col-6 {
+        max-width: 70%;
+        flex: 0 0 70%;
+    }
+     
+    section.home_banner {
+        background-position: 116% 160px;
+        background-size: 450px;
+    }
+    
+    .section4 .col-md-8 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 40px; 
+    }
+  
+    .section4 .col-md-4.authorListing {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 40px; 
+    }
+    
+    .section4 ul.list-group {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 0px;
+    }
+  
+    .section4 ul.list-group li {
+        float: left !important;
+        width: 33% !important;
+    }
+    
+    .subscription_section .col-6 {
+        max-width: 90%;
+        flex: 0 0 90%;
+    }
+    
+ } 
+ 
+ @media all and (max-width: 680px) {
+     
+    section.home_banner h1 {
+        font-size: 24px;
+        line-height: 30px;
+        margin-top: 40px !important;
+    }
+    
+    section.home_banner p {
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 20px;
+    }
+    
+    section.home_banner form input.form-control {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+    
+    section.home_banner form button {
+        margin-left: 0 !important;
+    }
+    
+    section.home_banner form {
+        margin-bottom: 20px;
+    }
+    
+    section.home_banner {
+        background-position: 148% 122px;
+    }
+     
+    h2.main_heading {
+        font-size: 16px; 
+    }
+    
+    .section4 .col-md-4.authorListing {
+        margin-bottom: 0px;
+    }
+    
+    .section3 .card img {
+        max-width: 90px;
+    }
+    
+    .section3 .card {
+        padding-left: 106px;
+    }
+    
+    .section3 .card .view {
+        left: 18px;
+    }
+    
+    .section3 .card h4.card-title {
+        font-size: 16px;
+    }
+    
+    a.view_all {
+        font-size: 14px;
+    }
+ }
+ 
+ 
+ 
+ @media all and (max-width: 480px) {
+    
+    section.home_banner .col-6 {
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+    
+    section.home_banner {
+        background-position: center 100px;
+        background-size: 300px;
+        padding-top: 230px;
+    }
+    
+    section.home_banner h1 {
+        font-size: 18px;
+        line-height: 20px;
+        margin-top: 30px;
+    }
+    
+    .section2 .card img.card-img-top {
+        height: 32px;
+        margin-bottom: 10px;
+    }
+    
+    section.section3 {
+        padding: 30px 0;
+    }
+     
+    .section4 h2.main_heading {
+        margin-bottom: 30px;
+    }
+    
+    .subscription_section, section.section4, section.section5 {
+        padding: 30px 0;
+    }
+    
+    .section4 ul.list-group li {
+        width: 49% !important;
+    }
+    
+    .testimonaials_wr {
+        max-width: 90%;
+    }
+    
+    .subscription_section .col-6 {
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+    
+    .subscription_section form .input-group {
+        width: 100%;
+    }
+
+    .subscription_section form button {
+        padding: 13px !important;
+        margin: 0 auto !important;
+        width: auto;
+    }
+    
+    .footer-copyright {
+        text-align: center;
+    }
+ }
+ 
+ 
+ @media all and (max-width: 380px) {
+    
+    section.section2 .col-4 {
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+    
+    section.section2 .col-4 .card {
+        max-width: 100%;
+    }
+    
+    section.section2 .col-4 .card br {
+        display:none; 
+    }
+    
+    .section4 ul.list-group li {
+        width: 100% !important;
+    }
+    
+    .section3 .card {
+        margin: 0px; 
+    }
+    
+    .section3 .card img {
+        max-width: 125px;
+    }
+    
+    .section3 .card {
+        padding-left: 140px;
+    }
+     
+ }
